@@ -1,15 +1,43 @@
-name: smithsonian-institution
-description: Needs a description.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json-icons/apis-json.png
-url: https://example.com/apis/apis.yml
-type: Contract
-created: '2024-12-25'
-modified: '2024-12-25'
-specificationVersion: '0.18'
+aid: smithsonian-institution
+name: Smithsonian Institution
+description: >-
+  The Smithsonian Institution provides open access APIs to its collections of
+  over 22 million objects, artworks, and natural history specimens from 19
+  museums, 21 libraries, and 9 research centers. The Open Access API enables
+  developers to search and retrieve collection data, images, and metadata.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Tag
-apis: []
-common: []
+  - Museums
+  - Collections
+  - Open Data
+  - Cultural Heritage
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/smithsonian-institution/refs/heads/main/apis.yml
+created: '2024-12-25'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: smithsonian-institution:open-access-api
+    name: Smithsonian Open Access API
+    description: >-
+      The Smithsonian Open Access API provides programmatic access to the
+      Smithsonian's publicly available collection data including objects,
+      artworks, specimens, and related media across its museums and research
+      centers.
+    humanURL: https://www.si.edu/openaccess/devtools
+    tags:
+      - Collections
+      - Open Data
+      - Museums
+    properties:
+      - type: Documentation
+        url: https://www.si.edu/openaccess/devtools
+common:
+  - type: Website
+    url: https://www.si.edu/
+  - type: GitHub Organization
+    url: https://github.com/Smithsonian
 maintainers:
-  - FN: API Evangelist
-    email: info@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
