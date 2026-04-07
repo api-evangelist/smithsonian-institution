@@ -8,10 +8,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Museums
   - Collections
-  - Open Data
   - Cultural Heritage
+  - Museums
+  - Open Data
 url: >-
   https://raw.githubusercontent.com/api-evangelist/smithsonian-institution/refs/heads/main/apis.yml
 created: '2024-12-25'
@@ -28,8 +28,8 @@ apis:
     humanURL: https://www.si.edu/openaccess/devtools
     tags:
       - Collections
-      - Open Data
       - Museums
+      - Open Data
     properties:
       - type: Documentation
         url: https://www.si.edu/openaccess/devtools
