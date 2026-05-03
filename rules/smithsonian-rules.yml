@@ -1,0 +1,71 @@
+extends: spectral:oas
+rules:
+  smithsonian-operation-ids:
+    description: All operations must have an operationId in camelCase
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: operationId
+      function: truthy
+
+  smithsonian-operation-tags:
+    description: All operations must have at least one tag
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  smithsonian-summary-title-case:
+    description: Operation summaries must use Title Case
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 ]*$"
+
+  smithsonian-api-key-required:
+    description: All operations must require an api_key query parameter
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: parameters
+      function: truthy
+
+  smithsonian-pagination-support:
+    description: Search endpoints should support start/rows pagination
+    severity: warn
+    given: "$.paths[*search*].get"
+    then:
+      field: parameters
+      function: truthy
+
+  smithsonian-json-response:
+    description: All successful responses should return application/json
+    severity: warn
+    given: "$.paths[*][*].responses.200.content"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - 'application/json'
+
+  smithsonian-no-trailing-slashes:
+    description: API paths must not have trailing slashes
+    severity: warn
+    given: "$.paths"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "/$"
+
+  smithsonian-error-401:
+    description: All operations must document 401 Unauthorized response
+    severity: warn
+    given: "$.paths[*][*].responses"
+    then:
+      field: '401'
+      function: truthy

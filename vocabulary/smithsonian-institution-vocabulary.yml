@@ -1,0 +1,127 @@
+vocabulary:
+  name: Smithsonian Institution Vocabulary
+  description: >-
+    Domain vocabulary for the Smithsonian Institution Open Access API, covering
+    key terms, museum unit codes, content types, facet categories, and metadata
+    concepts used across the collections.
+  version: "1.0.0"
+  created: "2026-05-02"
+  modified: "2026-05-02"
+  tags:
+    - Museums
+    - Collections
+    - Cultural Heritage
+    - Open Data
+
+terms:
+  - term: EDAN
+    definition: >-
+      Enterprise Digital Asset Network - the Smithsonian's centralized data
+      management system that serves as the backend for the Open Access API.
+    synonyms: [Enterprise Digital Asset Network]
+
+  - term: Collection Item
+    definition: >-
+      Any object, artwork, specimen, archival document, or other artifact
+      in the Smithsonian's collections that has been digitized and made
+      available through the Open Access API.
+    synonyms: [object, artifact, specimen, record]
+
+  - term: Unit Code
+    definition: >-
+      A short alphanumeric identifier for a specific Smithsonian museum, library,
+      or research center (e.g., NASM for Air and Space Museum, NMAH for American
+      History, SIA for Smithsonian Institution Archives).
+    synonyms: [museum code, department code]
+
+  - term: EDANMDM
+    definition: >-
+      The primary EDAN metadata format used for museum collection objects.
+      Most searchable collection items use this record type.
+    synonyms: [museum object record]
+
+  - term: Open Access
+    definition: >-
+      The Smithsonian's initiative to make its publicly available collection data,
+      images, and metadata freely accessible with no restrictions under CC0.
+    synonyms: [CC0, public domain, open data]
+
+  - term: IDS (Image Delivery Service)
+    definition: >-
+      The Smithsonian's image delivery service at ids.si.edu that serves
+      high-resolution images and thumbnails for collection objects with media.
+    synonyms: [image service, media delivery]
+
+  - term: Facet
+    definition: >-
+      A search filter category that groups results by shared attributes such
+      as object type, culture, place, date, or media availability.
+    synonyms: [filter, category, faceted navigation]
+
+museum_units:
+  - code: NASM
+    name: National Air and Space Museum
+  - code: NMAH
+    name: National Museum of American History
+  - code: NMNHAH
+    name: National Museum of Natural History
+  - code: SIA
+    name: Smithsonian Institution Archives
+  - code: FSG
+    name: Freer Gallery of Art and Arthur M. Sackler Gallery
+  - code: HMSG
+    name: Hirshhorn Museum and Sculpture Garden
+  - code: NPG
+    name: National Portrait Gallery
+  - code: SAAM
+    name: Smithsonian American Art Museum
+  - code: NMAFA
+    name: National Museum of African Art
+  - code: AAA
+    name: Archives of American Art
+  - code: NMAAHC
+    name: National Museum of African American History and Culture
+  - code: NMAI
+    name: National Museum of the American Indian
+  - code: SIL
+    name: Smithsonian Libraries
+
+content_types:
+  - type: edanmdm
+    description: Museum collection object metadata record
+  - type: ead_collection
+    description: Archival collection finding aid
+  - type: ead_component
+    description: Component within an archival collection
+
+categories:
+  - category: art_design
+    description: Art, design, and decorative arts collections
+  - category: history_culture
+    description: Historical artifacts, cultural objects, and social history
+  - category: science_technology
+    description: Scientific specimens, instruments, and technology artifacts
+
+search_facets:
+  - culture
+  - data_source
+  - date
+  - object_type
+  - online_media_type
+  - place
+  - topic
+  - unit_code
+
+sort_options:
+  - relevancy
+  - id
+  - newest
+  - updated
+  - random
+
+authentication:
+  - method: API Key
+    description: >-
+      Query parameter api_key required for all requests. Keys are obtained
+      by registering at api.data.gov (free, requires only email verification).
+      Keys are managed through the api.data.gov account portal.

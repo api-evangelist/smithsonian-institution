@@ -1,0 +1,63 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://edan.si.edu/openaccess/api/search/search",
+    "parameters": {
+      "q": "Wright Brothers airplane",
+      "start": 0,
+      "rows": 5,
+      "sort": "relevancy",
+      "type": "edanmdm",
+      "api_key": "your-api-key-here"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "status": 200,
+      "responseCode": 1,
+      "message": "",
+      "response": {
+        "rows": [
+          {
+            "id": "edanmdm:nasm_A19610048000",
+            "title": "Wright Flyer",
+            "unitCode": "NASM",
+            "type": "edanmdm",
+            "url": "https://www.si.edu/object/nasm_A19610048000",
+            "thumbnail": "https://ids.si.edu/ids/deliveryService?id=NASM-A19610048000&max=50"
+          },
+          {
+            "id": "edanmdm:nmah_609416",
+            "title": "Wright Brothers Bicycle",
+            "unitCode": "NMAH",
+            "type": "edanmdm",
+            "url": "https://www.si.edu/object/nmah_609416",
+            "thumbnail": null
+          }
+        ],
+        "rowCount": 48,
+        "start": 0,
+        "rows_returned": 2,
+        "facets": [
+          {
+            "fieldName": "unit_code",
+            "label": "Museum",
+            "values": [
+              {"value": "NASM", "count": 28},
+              {"value": "NMAH", "count": 15},
+              {"value": "SIA", "count": 5}
+            ]
+          },
+          {
+            "fieldName": "online_media_type",
+            "label": "Media Type",
+            "values": [
+              {"value": "Images", "count": 35}
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

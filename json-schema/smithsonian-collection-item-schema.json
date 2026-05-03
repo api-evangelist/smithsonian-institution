@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://edan.si.edu/openaccess/schemas/collection-item",
+  "title": "Smithsonian Collection Item",
+  "description": "A museum collection object from the Smithsonian Institution Open Access API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique EDAN identifier"
+    },
+    "title": {
+      "type": "string",
+      "description": "Object title"
+    },
+    "unitCode": {
+      "type": "string",
+      "description": "Smithsonian museum or library unit code (e.g., NMAH, NASM, SIA)",
+      "examples": ["NMAH", "NASM", "SIA", "NMNHAH", "FSG"]
+    },
+    "type": {
+      "type": "string",
+      "description": "EDAN record type",
+      "enum": ["edanmdm", "ead_collection", "ead_component"]
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the object page on si.edu"
+    },
+    "thumbnail": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to thumbnail image"
+    },
+    "content": {
+      "type": "object",
+      "description": "Full metadata content",
+      "properties": {
+        "descriptiveNonRepeating": {
+          "type": "object",
+          "description": "Non-repeating descriptive metadata",
+          "properties": {
+            "title": {
+              "type": "object",
+              "properties": {
+                "content": {"type": "string"}
+              }
+            },
+            "record_ID": {"type": "string"},
+            "unit_code": {"type": "string"},
+            "data_source": {"type": "string"},
+            "online_media": {
+              "type": "object",
+              "properties": {
+                "media": {
+                  "type": "array",
+                  "items": {"$ref": "#/definitions/MediaItem"}
+                }
+              }
+            }
+          }
+        },
+        "indexedStructured": {
+          "type": "object",
+          "description": "Structured indexed metadata for faceted search",
+          "properties": {
+            "object_type": {"type": "array", "items": {"type": "string"}},
+            "date": {"type": "array", "items": {"type": "string"}},
+            "place": {"type": "array", "items": {"type": "string"}},
+            "culture": {"type": "array", "items": {"type": "string"}},
+            "topic": {"type": "array", "items": {"type": "string"}},
+            "online_media_type": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "freetext": {
+          "type": "object",
+          "description": "Free-text metadata fields",
+          "properties": {
+            "physicalDescription": {"type": "array", "items": {"type": "object"}},
+            "setName": {"type": "array", "items": {"type": "object"}},
+            "creditLine": {"type": "array", "items": {"type": "object"}},
+            "notes": {"type": "array", "items": {"type": "object"}},
+            "identifier": {"type": "array", "items": {"type": "object"}}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "MediaItem": {
+      "type": "object",
+      "properties": {
+        "thumbnail": {"type": "string", "format": "uri"},
+        "idsId": {"type": "string"},
+        "type": {
+          "type": "string",
+          "enum": ["Images", "Videos", "Audio", "3D Models"]
+        },
+        "content": {"type": "string", "format": "uri"},
+        "caption": {"type": "string"}
+      }
+    }
+  }
+}

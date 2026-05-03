@@ -1,0 +1,30 @@
+{
+  "title": "Smithsonian Collection Item Structure",
+  "description": "JSON structure documentation for a Smithsonian collection item object",
+  "type": "object",
+  "fields": [
+    {"name": "id", "type": "string", "required": false, "description": "Unique EDAN identifier"},
+    {"name": "title", "type": "string", "required": false, "description": "Object title"},
+    {"name": "unitCode", "type": "string", "required": false, "description": "Museum/library unit code"},
+    {"name": "type", "type": "enum", "required": false, "values": ["edanmdm", "ead_collection", "ead_component"], "description": "EDAN record type"},
+    {"name": "url", "type": "uri", "required": false, "description": "SI.edu object page URL"},
+    {"name": "thumbnail", "type": "uri", "required": false, "description": "Thumbnail image URL"},
+    {"name": "content", "type": "object", "required": false, "description": "Full metadata content", "fields": [
+      {"name": "descriptiveNonRepeating", "type": "object", "fields": [
+        {"name": "title", "type": "object"},
+        {"name": "record_ID", "type": "string"},
+        {"name": "unit_code", "type": "string"},
+        {"name": "data_source", "type": "string"},
+        {"name": "online_media", "type": "object", "description": "Associated media files"}
+      ]},
+      {"name": "indexedStructured", "type": "object", "fields": [
+        {"name": "object_type", "type": "array", "description": "Classification by object type"},
+        {"name": "date", "type": "array", "description": "Associated dates"},
+        {"name": "place", "type": "array", "description": "Geographic associations"},
+        {"name": "culture", "type": "array", "description": "Cultural associations"},
+        {"name": "topic", "type": "array", "description": "Subject topics"}
+      ]},
+      {"name": "freetext", "type": "object", "description": "Free-text metadata fields"}
+    ]}
+  ]
+}
