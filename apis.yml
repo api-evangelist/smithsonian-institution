@@ -44,9 +44,9 @@ apis:
         url: https://www.si.edu/openaccess/devtools
       - type: Documentation
         url: https://edan.si.edu/openaccess/docs/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/Smithsonian/smithsonian-openaccess
-      - type: Sign Up
+      - type: SignUp
         url: https://api.data.gov/signup
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/smithsonian-institution/refs/heads/main/openapi/smithsonian-open-access-openapi.yml
@@ -58,7 +58,7 @@ common:
     url: https://www.si.edu/openaccess
   - type: Developer Tools
     url: https://www.si.edu/openaccess/devtools
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/Smithsonian
   - type: Data Repository
     url: https://github.com/Smithsonian/OpenAccess
