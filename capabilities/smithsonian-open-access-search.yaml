@@ -1,0 +1,247 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Smithsonian Open Access API — Search
+  description: 'Smithsonian Open Access API — Search. 3 operations. Lead operation: Search by Category. Self-contained Naftiko
+    capability covering one Smithsonian Institution business surface.'
+  tags:
+  - Smithsonian Institution
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SMITHSONIAN_INSTITUTION_API_KEY: SMITHSONIAN_INSTITUTION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: smithsonian-open-access-search
+    baseUri: https://edan.si.edu/openaccess
+    description: Smithsonian Open Access API — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: api-search-category_search
+      path: /api/search/category_search
+      operations:
+      - name: searchbycategory
+        method: GET
+        description: Search by Category
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Search query string
+          required: true
+        - name: category
+          in: query
+          type: string
+          description: Subject category filter
+        - name: start
+          in: query
+          type: integer
+          description: Zero-based offset for pagination
+        - name: rows
+          in: query
+          type: integer
+          description: Number of results to return
+        - name: sort
+          in: query
+          type: string
+          description: Sort order
+        - name: api_key
+          in: query
+          type: string
+          description: API key obtained from api.data.gov
+          required: true
+    - name: api-search-search
+      path: /api/search/search
+      operations:
+      - name: searchcontent
+        method: GET
+        description: Search Collections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Search query string
+          required: true
+        - name: start
+          in: query
+          type: integer
+          description: Zero-based offset for pagination
+        - name: rows
+          in: query
+          type: integer
+          description: Number of results to return
+        - name: sort
+          in: query
+          type: string
+          description: Sort order for results
+        - name: type
+          in: query
+          type: string
+          description: Filter by EDAN schema/record type
+        - name: row_group
+          in: query
+          type: string
+          description: Group results by object type
+        - name: api_key
+          in: query
+          type: string
+          description: API key obtained from api.data.gov
+          required: true
+    - name: api-search-terms
+      path: /api/search/terms
+      operations:
+      - name: searchterms
+        method: GET
+        description: Get Search Terms
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: category
+          in: query
+          type: string
+          description: The facet category to retrieve terms for
+          required: true
+        - name: starts_with
+          in: query
+          type: string
+          description: Filter terms that start with this character or string
+        - name: api_key
+          in: query
+          type: string
+          description: API key obtained from api.data.gov
+          required: true
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.SMITHSONIAN_INSTITUTION_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: smithsonian-open-access-search-rest
+    port: 8080
+    description: REST adapter for Smithsonian Open Access API — Search. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/search/category-search
+      name: api-search-category-search
+      description: REST surface for api-search-category_search.
+      operations:
+      - method: GET
+        name: searchbycategory
+        description: Search by Category
+        call: smithsonian-open-access-search.searchbycategory
+        with:
+          q: rest.q
+          category: rest.category
+          start: rest.start
+          rows: rest.rows
+          sort: rest.sort
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/search/search
+      name: api-search-search
+      description: REST surface for api-search-search.
+      operations:
+      - method: GET
+        name: searchcontent
+        description: Search Collections
+        call: smithsonian-open-access-search.searchcontent
+        with:
+          q: rest.q
+          start: rest.start
+          rows: rest.rows
+          sort: rest.sort
+          type: rest.type
+          row_group: rest.row_group
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/search/terms
+      name: api-search-terms
+      description: REST surface for api-search-terms.
+      operations:
+      - method: GET
+        name: searchterms
+        description: Get Search Terms
+        call: smithsonian-open-access-search.searchterms
+        with:
+          category: rest.category
+          starts_with: rest.starts_with
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: smithsonian-open-access-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Smithsonian Open Access API — Search. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: search-category
+      description: Search by Category
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: smithsonian-open-access-search.searchbycategory
+      with:
+        q: tools.q
+        category: tools.category
+        start: tools.start
+        rows: tools.rows
+        sort: tools.sort
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-collections
+      description: Search Collections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: smithsonian-open-access-search.searchcontent
+      with:
+        q: tools.q
+        start: tools.start
+        rows: tools.rows
+        sort: tools.sort
+        type: tools.type
+        row_group: tools.row_group
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-search-terms
+      description: Get Search Terms
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: smithsonian-open-access-search.searchterms
+      with:
+        category: tools.category
+        starts_with: tools.starts_with
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
