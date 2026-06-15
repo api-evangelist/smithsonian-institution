@@ -1,0 +1,1172 @@
+{
+  "item": [
+    {
+      "id": "d4910846-e781-4ccb-9d51-13d7c42be72f",
+      "name": "Content",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "40d8dcea-48c5-43e1-954a-3e1fdd4595d4",
+          "name": "Get Content By ID",
+          "request": {
+            "name": "Get Content By ID",
+            "description": {
+              "content": "Retrieves detailed content for a specific Smithsonian collection item by its unique identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) The unique identifier of the content item"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from api.data.gov"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "452d27b5-4976-425c-aa89-17448aca8f13",
+              "name": "Content item details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"unitCode\": \"string\",\n  \"type\": \"string\",\n  \"url\": \"https://lOnrpZovyuLBoDXEXfnFWtUwAuPqrluaf.qdvSi+a.Rd3t6A-ezB0FYWR\",\n  \"content\": {\n    \"descriptiveNonRepeating\": {\n      \"title\": {\n        \"content\": \"string\"\n      },\n      \"record_ID\": \"string\",\n      \"unit_code\": \"string\",\n      \"data_source\": \"string\",\n      \"online_media\": {\n        \"media\": [\n          {\n            \"thumbnail\": \"https://UNlsXeYgDgbvfMFYmKdtWvESNLisKq.zxvF5z3+a8VsZl\",\n            \"idsId\": \"string\",\n            \"type\": \"Audio\",\n            \"content\": \"http://vpbKjTqsBIwIHDHnYEKkn.hucsS,sh8gCEMupmvTlopxOiF6v8FxqNBp,t4kPmsQIccAha+Vx-szp-4NdDW.4o\",\n            \"caption\": \"string\"\n          },\n          {\n            \"thumbnail\": \"http://qCdNnLUUrakFuElvvwXzckYaUOdjd.pzlAMFmNCZWvkDuooq3kvGPSAeGGWvmmo2Hm-U,qwXVvLUvcblRC+y+4ceWC8X\",\n            \"idsId\": \"string\",\n            \"type\": \"Images\",\n            \"content\": \"https://PEyMKhzdfk.stbfh5JprpRLLsTijwFx1ldzaRRXwvk+McfcheAFFTXloIl6X5lyMys\",\n            \"caption\": \"string\"\n          }\n        ]\n      }\n    },\n    \"indexedStructured\": {\n      \"object_type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"date\": [\n        \"string\",\n        \"string\"\n      ],\n      \"place\": [\n        \"string\",\n        \"string\"\n      ],\n      \"culture\": [\n        \"string\",\n        \"string\"\n      ],\n      \"topic\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"freetext\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cdc049e-a84e-405c-8834-a4bc4fd2203d",
+              "name": "Bad request - missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ecd3109a-f2b0-4a0a-b831-82608a2aa97b",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "256152f8-0bab-45ca-8d08-330470f9b0b7",
+              "name": "Content item not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "235fbfa8-f745-4659-9bd4-e7c1d4c2ad03",
+      "name": "Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7656575d-8773-4187-90b1-3e46bab50e4a",
+          "name": "Search Collections",
+          "request": {
+            "name": "Search Collections",
+            "description": {
+              "content": "Full-text search across Smithsonian collections. Supports filtering by content type, row grouping, and sorting. Returns paginated results with metadata about matching collection items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "search",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search query string"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Zero-based offset for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "10",
+                  "description": "Number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "relevancy",
+                  "description": "Sort order for results"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "all",
+                  "description": "Filter by EDAN schema/record type"
+                },
+                {
+                  "disabled": false,
+                  "key": "row_group",
+                  "value": "<string>",
+                  "description": "Group results by object type"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from api.data.gov"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3208e408-eea4-41f3-b2fa-860fafe2b371",
+              "name": "Search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevancy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "all"
+                    },
+                    {
+                      "key": "row_group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4215,\n  \"responseCode\": 7516,\n  \"message\": \"string\",\n  \"response\": {\n    \"rows\": [\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"unitCode\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"http://LyIaRtjlwflOymzRicVyPb.pijth.oGgH+7yv4qUzsBGPc7JqjZ3HEW8+kYBC0KeTiZHj.M525umU76j5\",\n        \"thumbnail\": \"https://SwamHuCbtVIyevVFsTZgmXYhUnoPTb.ftg6J9UChMzvw\"\n      },\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"unitCode\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"http://aGGSOsoUqTFaerVdKHHWM.taIzy7NYJ8gmWVcgXz\",\n        \"thumbnail\": \"https://ShFjgVDBXOdX.cwV,6jg3Z.AHM+s6EQT7KHlG.glpzOm-sfMeFhjJzOWidL8ju0+IyCW\"\n      }\n    ],\n    \"rowCount\": 8315,\n    \"start\": 1167,\n    \"rows_returned\": 9326,\n    \"facets\": [\n      {\n        \"fieldName\": \"string\",\n        \"label\": \"string\",\n        \"values\": [\n          {\n            \"value\": \"string\",\n            \"count\": 5726\n          },\n          {\n            \"value\": \"string\",\n            \"count\": 9835\n          }\n        ]\n      },\n      {\n        \"fieldName\": \"string\",\n        \"label\": \"string\",\n        \"values\": [\n          {\n            \"value\": \"string\",\n            \"count\": 664\n          },\n          {\n            \"value\": \"string\",\n            \"count\": 2294\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcdf8dbe-9371-49d8-8823-3131ab989499",
+              "name": "Bad request - missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevancy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "all"
+                    },
+                    {
+                      "key": "row_group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1309759-8c18-4615-aebc-d014a5483ca0",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevancy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "all"
+                    },
+                    {
+                      "key": "row_group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1eba53c2-4a0b-4d59-94b0-1688c085643a",
+          "name": "Search by Category",
+          "request": {
+            "name": "Search by Category",
+            "description": {
+              "content": "Search Smithsonian collections filtered by a subject category. Categories include art and design, history and culture, and science and technology.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "search",
+                "category_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search query string"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Subject category filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Zero-based offset for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "10",
+                  "description": "Number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from api.data.gov"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e99ebd80-6ada-486c-a6da-99c6bc10025f",
+              "name": "Category search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search",
+                    "category_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4266,\n  \"responseCode\": 7025,\n  \"message\": \"string\",\n  \"response\": {\n    \"rows\": [\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"unitCode\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"http://UILZqyVvTn.hckseHYzhOS3K5HFbJYhQDvnlqFhDcleq32tnufcR+-zyXrfH5Gf5K2etFh\",\n        \"thumbnail\": \"https://hkab.sxUpztTRbzsDoBwd7gfqBzslwkuWs4nESIJ2BdYe-GzRjo0N4ql+uSth3V4auBuG0\"\n      },\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"unitCode\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"https://ZXPyeOpqQBgzRQbWoVVj.kfqgLBMq+8PS1halnMVkYIu\",\n        \"thumbnail\": \"https://JgxU.atwsCMeOiMhvUNh8mRQv24Z4fVdE2tRcBi,L-xq.eM00PKN4dy1-G26wT6OCpzn7gLlEbZp\"\n      }\n    ],\n    \"rowCount\": 181,\n    \"start\": 6902,\n    \"rows_returned\": 260,\n    \"facets\": [\n      {\n        \"fieldName\": \"string\",\n        \"label\": \"string\",\n        \"values\": [\n          {\n            \"value\": \"string\",\n            \"count\": 6855\n          },\n          {\n            \"value\": \"string\",\n            \"count\": 7868\n          }\n        ]\n      },\n      {\n        \"fieldName\": \"string\",\n        \"label\": \"string\",\n        \"values\": [\n          {\n            \"value\": \"string\",\n            \"count\": 4051\n          },\n          {\n            \"value\": \"string\",\n            \"count\": 3455\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c19b402-942e-4d97-82ba-66c3c0adfd8b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search",
+                    "category_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c222568d-8276-425f-850e-4c654b2ad5b6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search",
+                    "category_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ad8e40f-fc06-44b6-b15f-7b7b63921233",
+          "name": "Get Search Terms",
+          "request": {
+            "name": "Get Search Terms",
+            "description": {
+              "content": "Retrieves available search terms and facet values for a specified category. Useful for building search filters and faceted navigation. Optionally filter terms by starting character.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "search",
+                "terms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "(Required) The facet category to retrieve terms for"
+                },
+                {
+                  "disabled": false,
+                  "key": "starts_with",
+                  "value": "<string>",
+                  "description": "Filter terms that start with this character or string"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from api.data.gov"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45206c69-8811-4276-8871-4bb1898c77ea",
+              "name": "Available search terms for the category",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search",
+                    "terms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "starts_with",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 5718,\n  \"response\": {\n    \"terms\": [\n      {\n        \"term\": \"string\",\n        \"count\": 1998\n      },\n      {\n        \"term\": \"string\",\n        \"count\": 880\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a96566f8-e3bb-4e58-a75b-595e8cc1a10b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search",
+                    "terms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "starts_with",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29aaf111-5fee-4124-a27a-48f428722c17",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search",
+                    "terms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "starts_with",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "77576f24-ba53-44fa-819f-89af05b5427a",
+      "name": "Metrics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8104f59a-2962-4d6a-aaea-b2122f9f0d17",
+          "name": "Get Collection Metrics",
+          "request": {
+            "name": "Get Collection Metrics",
+            "description": {
+              "content": "Retrieves aggregate statistics and metrics about the Smithsonian collection, including total object counts and availability metrics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "metrics",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from api.data.gov"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a77ce30-95d1-49a7-b631-c53c92dd2b7f",
+              "name": "Collection metrics and statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "metrics",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 5288,\n  \"response\": {\n    \"total\": 7214,\n    \"online_media\": 4518,\n    \"open_access\": 3751\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f628cf3f-e530-4285-883e-3dd3db896a0f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "metrics",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://edan.si.edu/openaccess",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dd6ed01e-748d-47f2-95fa-be7044f2ce15",
+    "name": "Smithsonian Open Access API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Smithsonian Open Access API provides programmatic access to the Smithsonian Institution's publicly available collection data. Search and retrieve objects, artworks, natural history specimens, and related media from 19 museums, 21 libraries, and 9 research centers. Requires an API key from api.data.gov.\n\nContact Support:\n Name: Smithsonian Open Access\n Email: openaccess@si.edu",
+      "type": "text/plain"
+    }
+  }
+}

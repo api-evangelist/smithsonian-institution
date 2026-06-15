@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smithsonian Open Access API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Content By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://edan.si.edu/openaccess/api/content",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the content item"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from api.data.gov"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed content for a specific Smithsonian collection item by its unique identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://edan.si.edu/openaccess/api/search/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset for pagination"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for results"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by EDAN schema/record type"
+              },
+              {
+                "name": "row_group",
+                "value": "",
+                "type": "query",
+                "description": "Group results by object type"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from api.data.gov"
+              }
+            ]
+          },
+          "docs": "Full-text search across Smithsonian collections. Supports filtering by content type, row grouping, and sorting. Returns paginated results with metadata about matching collection items."
+        },
+        {
+          "info": {
+            "name": "Search by Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://edan.si.edu/openaccess/api/search/category_search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Subject category filter"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset for pagination"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from api.data.gov"
+              }
+            ]
+          },
+          "docs": "Search Smithsonian collections filtered by a subject category. Categories include art and design, history and culture, and science and technology."
+        },
+        {
+          "info": {
+            "name": "Get Search Terms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://edan.si.edu/openaccess/api/search/terms",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "The facet category to retrieve terms for"
+              },
+              {
+                "name": "starts_with",
+                "value": "",
+                "type": "query",
+                "description": "Filter terms that start with this character or string"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from api.data.gov"
+              }
+            ]
+          },
+          "docs": "Retrieves available search terms and facet values for a specified category. Useful for building search filters and faceted navigation. Optionally filter terms by starting character."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Collection Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://edan.si.edu/openaccess/api/metrics/stats",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from api.data.gov"
+              }
+            ]
+          },
+          "docs": "Retrieves aggregate statistics and metrics about the Smithsonian collection, including total object counts and availability metrics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
