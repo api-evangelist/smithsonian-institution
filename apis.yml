@@ -6,7 +6,7 @@ description: >-
   developers to search and retrieve collection data, images, and metadata across the world's largest museum and research
   complex.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Collections
   - Cultural Heritage
