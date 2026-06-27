@@ -43,7 +43,7 @@ apis:
         url: https://edan.si.edu/openaccess/docs/
       - type: GitHubRepository
         url: https://github.com/Smithsonian/smithsonian-openaccess
-      - type: SignUp
+      - type: Signup
         url: https://api.data.gov/signup
       - type: OpenAPI
         url: >-
