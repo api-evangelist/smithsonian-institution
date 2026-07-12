@@ -49,6 +49,10 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/smithsonian-institution/refs/heads/main/openapi/smithsonian-open-access-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/smithsonian-institution-domain-security.yml
+  - type: Authentication
+    url: authentication/smithsonian-institution-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/smithsonian-institution
   - type: Website
