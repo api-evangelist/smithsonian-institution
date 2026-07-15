@@ -49,6 +49,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/smithsonian-institution/refs/heads/main/openapi/smithsonian-open-access-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/smithsonian-institution-agentic-access.yml
   - type: DomainSecurity
     url: security/smithsonian-institution-domain-security.yml
   - type: Authentication
