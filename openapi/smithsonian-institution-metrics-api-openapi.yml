@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: Smithsonian Open Access Content Metrics API
+  description: The Smithsonian Open Access API provides programmatic access to the Smithsonian Institution's publicly available collection data. Search and retrieve objects, artworks, natural history specimens, and related media from 19 museums, 21 libraries, and 9 research centers. Requires an API key from api.data.gov.
+  version: 1.0.0
+  contact:
+    name: Smithsonian Open Access
+    url: https://www.si.edu/openaccess/devtools
+    email: openaccess@si.edu
+  license:
+    name: Creative Commons Zero (CC0)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://edan.si.edu/openaccess
+  description: Smithsonian EDAN Open Access API
+security:
+- ApiKey: []
+tags:
+- name: Metrics
+paths:
+  /api/metrics/stats:
+    get:
+      operationId: getMetricsStats
+      summary: Get Collection Metrics
+      description: Retrieves aggregate statistics and metrics about the Smithsonian collection, including total object counts and availability metrics.
+      tags:
+      - Metrics
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        description: API key obtained from api.data.gov
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection metrics and statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsStats'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    MetricsStats:
+      type: object
+      description: Aggregate collection metrics and statistics
+      properties:
+        status:
+          type: integer
+        response:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of collection records
+            online_media:
+              type: integer
+              description: Number of records with online media
+            open_access:
+              type: integer
+              description: Number of open access records
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: query
+      name: api_key
+      description: API key obtained by registering at api.data.gov

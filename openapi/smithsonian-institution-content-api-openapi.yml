@@ -1,0 +1,168 @@
+openapi: 3.0.3
+info:
+  title: Smithsonian Open Access Content API
+  description: The Smithsonian Open Access API provides programmatic access to the Smithsonian Institution's publicly available collection data. Search and retrieve objects, artworks, natural history specimens, and related media from 19 museums, 21 libraries, and 9 research centers. Requires an API key from api.data.gov.
+  version: 1.0.0
+  contact:
+    name: Smithsonian Open Access
+    url: https://www.si.edu/openaccess/devtools
+    email: openaccess@si.edu
+  license:
+    name: Creative Commons Zero (CC0)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://edan.si.edu/openaccess
+  description: Smithsonian EDAN Open Access API
+security:
+- ApiKey: []
+tags:
+- name: Content
+paths:
+  /api/content:
+    get:
+      operationId: getContent
+      summary: Get Content By ID
+      description: Retrieves detailed content for a specific Smithsonian collection item by its unique identifier.
+      tags:
+      - Content
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: The unique identifier of the content item
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        required: true
+        description: API key obtained from api.data.gov
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Content item details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentItem'
+        '400':
+          description: Bad request - missing or invalid parameters
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '404':
+          description: Content item not found
+components:
+  schemas:
+    MediaItem:
+      type: object
+      description: A media item (image, video, audio) associated with a collection object
+      properties:
+        thumbnail:
+          type: string
+          format: uri
+        idsId:
+          type: string
+        type:
+          type: string
+          enum:
+          - Images
+          - Videos
+          - Audio
+          - 3D Models
+        content:
+          type: string
+          format: uri
+        caption:
+          type: string
+    ContentItem:
+      type: object
+      description: A single Smithsonian collection item
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        title:
+          type: string
+          description: Item title
+        unitCode:
+          type: string
+          description: Smithsonian unit (museum/library) code
+        type:
+          type: string
+          description: EDAN record type
+        url:
+          type: string
+          format: uri
+          description: URL to the item on si.edu
+        content:
+          type: object
+          description: Full metadata content object
+          properties:
+            descriptiveNonRepeating:
+              type: object
+              description: Non-repeating descriptive metadata fields
+              properties:
+                title:
+                  type: object
+                  properties:
+                    content:
+                      type: string
+                record_ID:
+                  type: string
+                unit_code:
+                  type: string
+                data_source:
+                  type: string
+                online_media:
+                  type: object
+                  properties:
+                    media:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/MediaItem'
+            indexedStructured:
+              type: object
+              description: Structured and indexed metadata fields
+              properties:
+                object_type:
+                  type: array
+                  items:
+                    type: string
+                date:
+                  type: array
+                  items:
+                    type: string
+                place:
+                  type: array
+                  items:
+                    type: string
+                culture:
+                  type: array
+                  items:
+                    type: string
+                topic:
+                  type: array
+                  items:
+                    type: string
+            freetext:
+              type: object
+              description: Free-text metadata fields
+              properties:
+                physicalDescription:
+                  type: array
+                  items:
+                    type: object
+                setName:
+                  type: array
+                  items:
+                    type: object
+                creditLine:
+                  type: array
+                  items:
+                    type: object
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: query
+      name: api_key
+      description: API key obtained by registering at api.data.gov
