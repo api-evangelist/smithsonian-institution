@@ -6,7 +6,20 @@ description: >-
   developers to search and retrieve collection data, images, and metadata across the world's largest museum and research
   complex.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/smithsonian-institution.png
 tags:
   - Collections
   - Cultural Heritage
@@ -20,34 +33,60 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/smithsonian-institution/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: smithsonian-institution:open-access-api
-    name: Smithsonian Open Access API
-    description: >-
-      The Smithsonian Open Access API provides programmatic access to the Smithsonian's publicly available collection
-      data including objects, artworks, specimens, and related media across its museums and research centers. Requires
-      API key registration at api.data.gov.
-    humanURL: https://www.si.edu/openaccess/devtools
-    baseURL: https://edan.si.edu/openaccess
-    tags:
-      - Collections
-      - Museums
-      - Open Data
-      - Search
-      - Objects
-      - Art
-      - Natural History
-    properties:
-      - type: Documentation
-        url: https://www.si.edu/openaccess/devtools
-      - type: Documentation
-        url: https://edan.si.edu/openaccess/docs/
-      - type: GitHubRepository
-        url: https://github.com/Smithsonian/smithsonian-openaccess
-      - type: Signup
-        url: https://api.data.gov/signup
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/smithsonian-institution/refs/heads/main/openapi/smithsonian-open-access-openapi.yml
+- aid: smithsonian-institution:smithsonian-institution-content-api
+  name: Smithsonian Institution Content API
+  description: The Content API from Smithsonian Institution — 1 operation(s) for content.
+  humanURL: https://www.si.edu/openaccess/devtools
+  baseURL: https://edan.si.edu/openaccess
+  tags:
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/smithsonian-institution-content-api-openapi.yml
+  - type: Documentation
+    url: https://www.si.edu/openaccess/devtools
+  - type: Documentation
+    url: https://edan.si.edu/openaccess/docs/
+  - type: GitHubRepository
+    url: https://github.com/Smithsonian/smithsonian-openaccess
+  - type: Signup
+    url: https://api.data.gov/signup
+- aid: smithsonian-institution:smithsonian-institution-metrics-api
+  name: Smithsonian Institution Metrics API
+  description: The Metrics API from Smithsonian Institution — 1 operation(s) for metrics.
+  humanURL: https://www.si.edu/openaccess/devtools
+  baseURL: https://edan.si.edu/openaccess
+  tags:
+  - Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/smithsonian-institution-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://www.si.edu/openaccess/devtools
+  - type: Documentation
+    url: https://edan.si.edu/openaccess/docs/
+  - type: GitHubRepository
+    url: https://github.com/Smithsonian/smithsonian-openaccess
+  - type: Signup
+    url: https://api.data.gov/signup
+- aid: smithsonian-institution:smithsonian-institution-search-api
+  name: Smithsonian Institution Search API
+  description: The Search API from Smithsonian Institution — 3 operation(s) for search.
+  humanURL: https://www.si.edu/openaccess/devtools
+  baseURL: https://edan.si.edu/openaccess
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/smithsonian-institution-search-api-openapi.yml
+  - type: Documentation
+    url: https://www.si.edu/openaccess/devtools
+  - type: Documentation
+    url: https://edan.si.edu/openaccess/docs/
+  - type: GitHubRepository
+    url: https://github.com/Smithsonian/smithsonian-openaccess
+  - type: Signup
+    url: https://api.data.gov/signup
 common:
   - type: AgenticAccess
     url: agentic-access/smithsonian-institution-agentic-access.yml
