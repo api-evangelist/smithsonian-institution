@@ -1,0 +1,483 @@
+openapi: 3.0.3
+info:
+  title: Smithsonian Open Access API
+  description: >-
+    The Smithsonian Open Access API provides programmatic access to the Smithsonian
+    Institution's publicly available collection data. Search and retrieve objects,
+    artworks, natural history specimens, and related media from 19 museums, 21
+    libraries, and 9 research centers. Requires an API key from api.data.gov.
+  version: 1.0.0
+  contact:
+    name: Smithsonian Open Access
+    url: https://www.si.edu/openaccess/devtools
+    email: openaccess@si.edu
+  license:
+    name: Creative Commons Zero (CC0)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+  - url: https://edan.si.edu/openaccess
+    description: Smithsonian EDAN Open Access API
+security:
+  - ApiKey: []
+paths:
+  /api/content:
+    get:
+      operationId: getContent
+      summary: Get Content By ID
+      description: >-
+        Retrieves detailed content for a specific Smithsonian collection item by
+        its unique identifier.
+      tags:
+        - Content
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: The unique identifier of the content item
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          description: API key obtained from api.data.gov
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Content item details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentItem'
+        '400':
+          description: Bad request - missing or invalid parameters
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '404':
+          description: Content item not found
+
+  /api/search/search:
+    get:
+      operationId: searchContent
+      summary: Search Collections
+      description: >-
+        Full-text search across Smithsonian collections. Supports filtering by
+        content type, row grouping, and sorting. Returns paginated results with
+        metadata about matching collection items.
+      tags:
+        - Search
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: Search query string
+          schema:
+            type: string
+        - name: start
+          in: query
+          required: false
+          description: Zero-based offset for pagination
+          schema:
+            type: integer
+            default: 0
+        - name: rows
+          in: query
+          required: false
+          description: Number of results to return
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+        - name: sort
+          in: query
+          required: false
+          description: Sort order for results
+          schema:
+            type: string
+            enum: [relevancy, id, newest, updated, random]
+            default: relevancy
+        - name: type
+          in: query
+          required: false
+          description: Filter by EDAN schema/record type
+          schema:
+            type: string
+            enum: [edanmdm, ead_collection, ead_component, all]
+            default: all
+        - name: row_group
+          in: query
+          required: false
+          description: Group results by object type
+          schema:
+            type: string
+            enum: [objects, archives]
+        - name: api_key
+          in: query
+          required: true
+          description: API key obtained from api.data.gov
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+        '400':
+          description: Bad request - missing or invalid parameters
+        '401':
+          description: Unauthorized - invalid or missing API key
+
+  /api/search/category_search:
+    get:
+      operationId: searchByCategory
+      summary: Search by Category
+      description: >-
+        Search Smithsonian collections filtered by a subject category.
+        Categories include art and design, history and culture, and science
+        and technology.
+      tags:
+        - Search
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: Search query string
+          schema:
+            type: string
+        - name: category
+          in: query
+          required: false
+          description: Subject category filter
+          schema:
+            type: string
+            enum: [art_design, history_culture, science_technology]
+        - name: start
+          in: query
+          required: false
+          description: Zero-based offset for pagination
+          schema:
+            type: integer
+            default: 0
+        - name: rows
+          in: query
+          required: false
+          description: Number of results to return
+          schema:
+            type: integer
+            default: 10
+        - name: sort
+          in: query
+          required: false
+          description: Sort order
+          schema:
+            type: string
+            enum: [relevancy, id, newest, updated, random]
+        - name: api_key
+          in: query
+          required: true
+          description: API key obtained from api.data.gov
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Category search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+
+  /api/search/terms:
+    get:
+      operationId: searchTerms
+      summary: Get Search Terms
+      description: >-
+        Retrieves available search terms and facet values for a specified category.
+        Useful for building search filters and faceted navigation. Optionally
+        filter terms by starting character.
+      tags:
+        - Search
+      parameters:
+        - name: category
+          in: query
+          required: true
+          description: The facet category to retrieve terms for
+          schema:
+            type: string
+            enum: [culture, data_source, date, object_type, online_media_type, place, topic, unit_code]
+        - name: starts_with
+          in: query
+          required: false
+          description: Filter terms that start with this character or string
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          description: API key obtained from api.data.gov
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Available search terms for the category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermsResult'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+
+  /api/metrics/stats:
+    get:
+      operationId: getMetricsStats
+      summary: Get Collection Metrics
+      description: >-
+        Retrieves aggregate statistics and metrics about the Smithsonian collection,
+        including total object counts and availability metrics.
+      tags:
+        - Metrics
+      parameters:
+        - name: api_key
+          in: query
+          required: true
+          description: API key obtained from api.data.gov
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Collection metrics and statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsStats'
+        '401':
+          description: Unauthorized
+
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: query
+      name: api_key
+      description: API key obtained by registering at api.data.gov
+
+  schemas:
+    ContentItem:
+      type: object
+      description: A single Smithsonian collection item
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        title:
+          type: string
+          description: Item title
+        unitCode:
+          type: string
+          description: Smithsonian unit (museum/library) code
+        type:
+          type: string
+          description: EDAN record type
+        url:
+          type: string
+          format: uri
+          description: URL to the item on si.edu
+        content:
+          type: object
+          description: Full metadata content object
+          properties:
+            descriptiveNonRepeating:
+              type: object
+              description: Non-repeating descriptive metadata fields
+              properties:
+                title:
+                  type: object
+                  properties:
+                    content:
+                      type: string
+                record_ID:
+                  type: string
+                unit_code:
+                  type: string
+                data_source:
+                  type: string
+                online_media:
+                  type: object
+                  properties:
+                    media:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/MediaItem'
+            indexedStructured:
+              type: object
+              description: Structured and indexed metadata fields
+              properties:
+                object_type:
+                  type: array
+                  items:
+                    type: string
+                date:
+                  type: array
+                  items:
+                    type: string
+                place:
+                  type: array
+                  items:
+                    type: string
+                culture:
+                  type: array
+                  items:
+                    type: string
+                topic:
+                  type: array
+                  items:
+                    type: string
+            freetext:
+              type: object
+              description: Free-text metadata fields
+              properties:
+                physicalDescription:
+                  type: array
+                  items:
+                    type: object
+                setName:
+                  type: array
+                  items:
+                    type: object
+                creditLine:
+                  type: array
+                  items:
+                    type: object
+
+    SearchResult:
+      type: object
+      description: Paginated search results from the Smithsonian collections
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        responseCode:
+          type: integer
+        message:
+          type: string
+        response:
+          type: object
+          properties:
+            rows:
+              type: array
+              items:
+                $ref: '#/components/schemas/SearchItem'
+            rowCount:
+              type: integer
+              description: Total number of matching results
+            start:
+              type: integer
+              description: Offset of first result
+            rows_returned:
+              type: integer
+              description: Number of results returned
+            facets:
+              type: array
+              items:
+                $ref: '#/components/schemas/Facet'
+
+    SearchItem:
+      type: object
+      description: A search result item (summary view)
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        unitCode:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+          format: uri
+        thumbnail:
+          type: string
+          format: uri
+          description: URL to thumbnail image if available
+
+    Facet:
+      type: object
+      description: A search facet with counts
+      properties:
+        fieldName:
+          type: string
+        label:
+          type: string
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              count:
+                type: integer
+
+    TermsResult:
+      type: object
+      description: Available search terms for a category
+      properties:
+        status:
+          type: integer
+        response:
+          type: object
+          properties:
+            terms:
+              type: array
+              items:
+                type: object
+                properties:
+                  term:
+                    type: string
+                  count:
+                    type: integer
+
+    MediaItem:
+      type: object
+      description: A media item (image, video, audio) associated with a collection object
+      properties:
+        thumbnail:
+          type: string
+          format: uri
+        idsId:
+          type: string
+        type:
+          type: string
+          enum: [Images, Videos, Audio, 3D Models]
+        content:
+          type: string
+          format: uri
+        caption:
+          type: string
+
+    MetricsStats:
+      type: object
+      description: Aggregate collection metrics and statistics
+      properties:
+        status:
+          type: integer
+        response:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Total number of collection records
+            online_media:
+              type: integer
+              description: Number of records with online media
+            open_access:
+              type: integer
+              description: Number of open access records
