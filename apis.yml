@@ -88,6 +88,9 @@ apis:
   - type: Signup
     url: https://api.data.gov/signup
 common:
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/Smithsonian/smithsonian-openaccess/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/smithsonian-institution-agentic-access.yml
   - type: DomainSecurity
