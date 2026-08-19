@@ -1,0 +1,276 @@
+{
+  "item": [
+    {
+      "id": "f223385b-72df-4738-96f6-4df765d9309a",
+      "name": "Content",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1560c6f-8a0b-424e-8685-822489d5e65a",
+          "name": "Get Content By ID",
+          "request": {
+            "name": "Get Content By ID",
+            "description": {
+              "content": "Retrieves detailed content for a specific Smithsonian collection item by its unique identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) The unique identifier of the content item"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from api.data.gov"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64d7b11f-d4e5-41f2-ab80-61501f3644c3",
+              "name": "Content item details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"unitCode\": \"string\",\n  \"type\": \"string\",\n  \"url\": \"https://xfCNcHWlMGiipD.yrxkla2ArKLxgGXrE4bd4yot8.TgV62lNZJwC0c5Qx2fXEZAPhJiAg6QmT5A9o9R1H3-zip\",\n  \"content\": {\n    \"descriptiveNonRepeating\": {\n      \"title\": {\n        \"content\": \"string\"\n      },\n      \"record_ID\": \"string\",\n      \"unit_code\": \"string\",\n      \"data_source\": \"string\",\n      \"online_media\": {\n        \"media\": [\n          {\n            \"thumbnail\": \"http://MZ.waPVSjM7BPZpTpI-fp4KcfyqoIzzy,XAU\",\n            \"idsId\": \"string\",\n            \"type\": \"3D Models\",\n            \"content\": \"http://wfPEEdoAftMLNNELB.baCWFREly7yDQhbpJuq9dhAasiNCL2Imwyo\",\n            \"caption\": \"string\"\n          },\n          {\n            \"thumbnail\": \"http://xgoHrzfwWJDugziW.twbhuJROA6I0on\",\n            \"idsId\": \"string\",\n            \"type\": \"Images\",\n            \"content\": \"http://SZJrQigbhQEERSuLgoLElcFYqyi.ckpk-2wD3u2,QNEDz+FN1b+Zx8FIjWh3T7uCFYA\",\n            \"caption\": \"string\"\n          }\n        ]\n      }\n    },\n    \"indexedStructured\": {\n      \"object_type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"date\": [\n        \"string\",\n        \"string\"\n      ],\n      \"place\": [\n        \"string\",\n        \"string\"\n      ],\n      \"culture\": [\n        \"string\",\n        \"string\"\n      ],\n      \"topic\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"freetext\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9949e967-1691-4ad9-999f-2c4e1ee21e61",
+              "name": "Bad request - missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fe8824b-3329-481b-848f-2ca65442a07e",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "66ed8437-bea6-4ffe-ab0d-e335ad11e03a",
+              "name": "Content item not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://edan.si.edu/openaccess",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d0dbd96f-cf4d-4888-9d36-715addefcdb0",
+    "name": "Smithsonian Open Access Content API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Smithsonian Open Access API provides programmatic access to the Smithsonian Institution's publicly available collection data. Search and retrieve objects, artworks, natural history specimens, and related media from 19 museums, 21 libraries, and 9 research centers. Requires an API key from api.data.gov.\n\nContact Support:\n Name: Smithsonian Open Access\n Email: openaccess@si.edu",
+      "type": "text/plain"
+    }
+  }
+}

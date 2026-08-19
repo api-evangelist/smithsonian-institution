@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smithsonian Open Access Content Metrics API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Collection Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://edan.si.edu/openaccess/api/metrics/stats",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from api.data.gov"
+              }
+            ]
+          },
+          "docs": "Retrieves aggregate statistics and metrics about the Smithsonian collection, including total object counts and availability metrics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

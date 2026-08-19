@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smithsonian Open Access Content API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Content By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://edan.si.edu/openaccess/api/content",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the content item"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from api.data.gov"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed content for a specific Smithsonian collection item by its unique identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
