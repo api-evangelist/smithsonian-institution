@@ -6,6 +6,20 @@ description: >-
   developers to search and retrieve collection data, images, and metadata across the world's largest museum and research
   complex.
 type: Index
+deliveryModel:
+  model: open-core
+  license: Apache-2.0
+  open_source: true
+  commercial: true
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -96,6 +110,8 @@ apis:
   - type: Signup
     url: https://api.data.gov/signup
 common:
+  - type: IssueTracker
+    url: https://github.com/Smithsonian/smithsonian-openaccess/issues
   - type: License
     name: Apache-2.0
     url: https://github.com/Smithsonian/smithsonian-openaccess/blob/main/LICENSE
